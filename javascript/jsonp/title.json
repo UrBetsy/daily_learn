@@ -1,0 +1,29 @@
+handle([
+  {
+    "number":1,
+    "question":"1+8=",
+    "selector":"9",
+    "answer":true
+  },
+  {
+    "number":2,
+    "question":"王俊凯是下面内地团体的成员",
+    "selector":"TFBoys",
+    "answer":true
+  }]
+ )
+
+handle2([
+  {
+    "number":1,
+    "question":"1+8=",
+    "selector":"9",
+    "answer":true
+  },
+  {
+    "number":2,
+    "question":"王俊凯是下面内地团体的成员",
+    "selector":"TFBoy",
+    "answer":true
+  }]
+ )

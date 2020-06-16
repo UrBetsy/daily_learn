@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <script>
+            function MyMath(){
+                console.log(typeof(Math)) 
+                var a = Object.getOwnPropertyNames(Math)
+                let len = a.length
+                for(i=0;i<len;i++){
+                    name = a[i]
+                    this.name = Math.name
+                }
+            }
+            var o1 = new MyMath()
+            console.log(o1)
+            
+        </script>
+    </body>
+</html>
+
+
+
+

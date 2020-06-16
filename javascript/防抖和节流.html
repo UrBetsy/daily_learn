@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防抖和节流</title>
+</head>
+<style type="text/css">
+    div{
+        height: 3000px;
+        width: 100px
+    }
+</style>
+<body>
+    <div></div>
+    <script type="text/javascript">
+    //防抖
+//      function debounce(fn,wait){
+//      		var timeout = null;
+//      		return function(){
+//      			if(timeout !== null) clearTimeout(timeout) 
+//      			timeout = setTimeout(fn,wait) 
+//      		}
+//      }
+//      handle(){
+//      		console.log('事件处理函数')
+//      }
+//      window.addEventListener('scroll',debounce(handle,1000))
+    //节流(时间戳)
+//  	function throttle(fn,delay){
+//  			var prev = Date.now();
+//  			return function(){
+//  				var context = this;
+//  				var args = arguments;
+//  				var now = Date.now();
+//  				if(now - prev >= delay){
+//  					fn.apply(context,args);
+//  					prev = Date.now();
+//  				}
+//  			}
+//  		}
+//  		handle(){
+//      		console.log('事件处理函数')
+//      }
+//      window.addEventListener('scroll',throttle(handle,1000))
+
+    //节流(定时器)
+	// function throttle(){
+	// 	var timeout = null
+ //        console.log('timeout',timeout)
+	// 	// return function(){
+	// 	if(!timeout){
+	// 		timeout = setTimeout(function(){
+	// 			console.log('节流');
+	// 			timeout = null;
+	// 		},1000)
+	// 	}
+	// 	// }
+	// }
+    
+    window.addEventListener('scroll',console.log('scroll'))
+
+   </script>
+</body>
+</html>
