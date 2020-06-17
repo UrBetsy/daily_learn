@@ -329,30 +329,53 @@
 
 
 
-        function Person() {
-            getAge = function () {
-                console.log(10)
-            }
-            return this;
+        // function Person() {
+        //     getAge = function () {
+        //         console.log(10)
+        //     }
+        //     return this;
+        // }
+        // Person.getAge = function () {
+        //     console.log(20)
+        // }
+        // Person.prototype.getAge = function () {
+        //     console.log(30)
+        // }
+        // var getAge = function () {
+        //     console.log(40)
+        // }
+        // function getAge() {
+        //     console.log(50)
+        // }
+        // Person.getAge(); // 20
+        // getAge(); // 40
+        // Person().getAge(); // 10
+        // new Person.getAge(); // 20
+        // getAge(); // 10???
+        // new Person().getAge(); // 30
+
+
+
+
+        // Function.prototype.a = () => console.log(a)
+        // Object.prototype.b = () => console.log(b)
+        // function A () {
+
+        // }
+        // var a = new A()
+        // a.a() // 报错 a.a not function
+        // a.b() // () => console.log(b)
+
+
+        function A() {
+
         }
-        Person.getAge = function () {
-            console.log(20)
-        }
-        Person.prototype.getAge = function () {
-            console.log(30)
-        }
-        var getAge = function () {
-            console.log(40)
-        }
-        function getAge() {
-            console.log(50)
-        }
-        Person.getAge(); // 20
-        getAge(); // 40
-        Person().getAge(); // 10
-        new Person.getAge(); // 20
-        getAge(); // 10???
-        new Person().getAge(); // 30
+        A.prototype.x = 10
+        let a = new A()
+        A.prototype = {x: 10, y:20}
+        let b = new A()
+        console.log(a.x, a.y) // 10 undefined
+        console.log(b.x, b.y) // 10 20
     </script>
 </body>
 </html>

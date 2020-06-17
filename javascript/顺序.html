@@ -1,44 +1,22 @@
 <html>
 <head></head>
 <body>
-
     <script>
-		console.log(1)
-		setTimeout(()=>{
-			console.log(2)
-		})
-		process.nextTick(()=>{
-			console.log(3)
-		})
-		setImmediate(()=>{
-			console.log(4)
-		})
-		new Promise(resolve=>{
-			console.log('5')
-			resolve();
-			console.log(6)
-		}).then(()=>{
-			console.log('7')
-		})
-
-		Promise.resolve().then(()=>{
-			console.log(8)
-			process.nextTick(()=>{
-				console.log(9)
-			})
-		})
 		document.body.style.background = 'green'
 		console.log(1)
-		// Promise.resolve().then(() => {
-		//     console.log(2)
-		//     document.body.style.background = 'red'
-		// })
-		setTimeout(() => {
-			console.log(2)
-			document.body.style.background = 'red'
-		}, 0);
+		Promise.resolve().then(() => {
+		    console.log(2)
+		    document.body.style.background = 'red'
+		})
+		// setTimeout(() => {
+		// 	console.log(2)
+		// 	document.body.style.background = 'red'
+		// }, 0);
 		console.log(3)
-		// 1,3,2 red
+		// 解析：
+		// 时间循环执行顺序 栈 -> 微任务 -> GUI渲染 -> 宏任务
+		// promise的话  ： 1 3 2 red
+		// setTimeout的话 ： 1 3 green 2 red
 	</script>
 </body>
 </html>
