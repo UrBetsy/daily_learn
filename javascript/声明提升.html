@@ -289,6 +289,70 @@
         // // 解析： 在执行a - b时,a和b都要转换为数字。首先a先转换为字符串,[3] => [3].toString() => '3',
         // // 然后Number(3) => 3。b同理。因此转换之后为3 - 1 = 2。
         
+
+        // 原型链相关
+        // function A () {
+        // }
+        // A.prototype.n = 1;
+
+        // var b = new A();
+
+        // A.prototype = {
+        //     n: 2,
+        //     m: 3
+        // }
+        // var c = new A();
+
+        // console.log(b.n, b.m);
+        // console.log(c.n, c.m);
+
+
+
+
+        // var F = function(){};
+        // var O = {};
+        // Object.prototype.a = function(){
+        //     console.log('a')
+        // }
+        // Function.prototype.b = function(){
+        //     console.log('b')
+        // }
+        // var f = new F();
+
+        // F.a();  // a
+        // F.b();  // b
+        // O.a();  // a
+        // // O.b();  // 报错：O.b is not a function
+        // console.log(Object instanceof Function);
+        // console.log(Function instanceof Object);
+        // console.log(Function instanceof Function);
+
+
+
+        function Person() {
+            getAge = function () {
+                console.log(10)
+            }
+            return this;
+        }
+        Person.getAge = function () {
+            console.log(20)
+        }
+        Person.prototype.getAge = function () {
+            console.log(30)
+        }
+        var getAge = function () {
+            console.log(40)
+        }
+        function getAge() {
+            console.log(50)
+        }
+        Person.getAge(); // 20
+        getAge(); // 40
+        Person().getAge(); // 10
+        new Person.getAge(); // 20
+        getAge(); // 10???
+        new Person().getAge(); // 30
     </script>
 </body>
 </html>
