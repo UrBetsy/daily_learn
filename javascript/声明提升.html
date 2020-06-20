@@ -376,6 +376,20 @@
         let b = new A()
         console.log(a.x, a.y) // 10 undefined
         console.log(b.x, b.y) // 10 20
+
+
+
+
+        // var a = {x: 1}
+        // var b = a
+        // a.x = a = {n: 1}
+
+        var a = {x: 1}
+        var b = a
+        a = {n: 1}
+        a.x = a
+        console.log(a)
+        console.log(b)
     </script>
 </body>
 </html>

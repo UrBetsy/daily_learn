@@ -1,20 +1,20 @@
-var obj = {name:"Smiley"};
-var greeting = function(str, lang){
-    this.value = 'greetingValue';
-    console.log("Welcome "+this.name+" to "+str+" in "+lang);
-};
-var objGreeting = greeting.bind(obj, 'the world'); 
+// var obj = {name:"Smiley"};
+// var greeting = function(str, lang){
+//     this.value = 'greetingValue';
+//     console.log("Welcome "+this.name+" to "+str+" in "+lang);
+// };
+// var objGreeting = greeting.bind(obj, 'the world'); 
 
-objGreeting('JS');
-var newObj = new objGreeting('JS');
-console.log(newObj.value);
+// objGreeting('JS');
+// var newObj = new objGreeting('JS');
+// console.log(newObj.value);
 
 
 Function.prototype.myBind = function() {
-    var thatFunc = this, 
-        that = [].shift(arguments);
-        thatArgs = [].slice.call(arguments)
-
+    var thatFunc = this;
+    var argArr = [].slice.call(arguments)
+        that = argArr.shift();
+        thatArgs = argArr;
     if (typeof thatFunc !== 'function') {
         throw new TypeError('Function.prototype.bind - ' +
              'what is trying to be bound is not callable');
@@ -23,8 +23,8 @@ Function.prototype.myBind = function() {
     var fBound  = function() {
         return thatFunc.apply(this instanceof fBound
                  ? this
-                 : thatArg,
-                 args.concat(Array.prototype.slice.call(arguments)));
+                 : that,
+                 thatArgs.concat(Array.prototype.slice.call(arguments)));
     };
     var fNOP = function() {};
     if (thatFunc.prototype) {
@@ -39,5 +39,5 @@ function getName(age) {
     console.log(this.name, age)
 }
 getName()
-let bindFun = getName.bind(obj, 23)
+let bindFun = getName.myBind(obj, 23)
 bindFun()
