@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//promise版本的ajax
+			function ajax(method, url, data) {
+			    var request = new XMLHttpRequest();
+			    return new Promise(function (resolve, reject) {
+			        request.onreadystatechange = function () {
+			            if (request.readyState == 4 && request.status == 200) {
+		                    resolve(request.responseText);
+		                } else {
+		                    reject(request.status);
+		                }
+			        };
+			        request.open(method, url);
+			        request.send(data);
+			    });
+			}
+
+			//ajax
+			function ajax(url,data){
+				var request = null
+				if(window.XMLHttpRequest){
+					request = new XMLHttpRequest()
+				}else if(winodw.ActiveXObject){
+					request = new ActiveXObject('Microsoft.XMLHTTP')
+				}
+				if(request != null){
+					request.onreadystatechange = function(){
+						if(request.readyState == 4 && request.status == 200){
+							console.log('请求成功',request.status,request.statusText,request.responseText)
+						}else{
+							console.log('请求失败')
+						}
+					}
+
+					request.open(method,url)
+					request.send(data)
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head></head>
+<body>
+    <script>
+		document.body.style.background = 'green'
+		console.log(1)
+		Promise.resolve().then(() => {
+		    console.log(2)
+		    document.body.style.background = 'red'
+		})
+		// setTimeout(() => {
+		// 	console.log(2)
+		// 	document.body.style.background = 'red'
+		// }, 0);
+		console.log(3)
+		// 解析：
+		// 时间循环执行顺序 栈 -> 微任务 -> GUI渲染 -> 宏任务
+		// promise的话  ： 1 3 2 red
+		// setTimeout的话 ： 1 3 green 2 red
+	</script>
+</body>
+</html>

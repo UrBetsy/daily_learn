@@ -1,3 +1,4 @@
+// 这里是有很多朋友，求取有多杀个朋友圈
 var fs = require('fs');
 var readline = require('readline');
 

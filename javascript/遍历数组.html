@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let arr=[11,12,14,15,16,17]
+        arr[7]=10
+        let obj = {
+        	'a' : 'aa',
+        	'b' : 'bb',
+        	'c' : 'cc',
+        	'd' : 'dd',
+        	'e' : 'ee',
+        }
+
+        var len = arr.length
+        for(var i=0;i<len;i++){
+        	console.log(arr[i])
+        }//会打印出没有初始化的元素
+
+        for(item in arr){
+        	console.log(arr[item])
+        }//不会打印没有初始化话的元素
+        for(item in obj){
+        	console.log(item,obj[item])
+        }//可以遍历对象
+
+        for(item of arr){
+        	console.log(item)
+        }//可遍历所有迭代对象，对打印为初始化的属性
+
+        let arrnew = arr.map(item=> item * 5)
+        console.log(arrnew)//[55,60,70,75,empty,50]
+
+        let total = arr.reduce(function(qian,hou){
+        	return qian+hou
+        },0)
+        console.log(total)
+
+        var more = arr.filter(function(num){
+        	return num>15
+        })
+        console.log(more)
+
+        var result = arr.every(function (item, index) {
+		    return item > 15
+		})
+        console.log(result)
+
+        var result1 = arr.some(function (item, index) {
+		    return item > 15
+		})
+        console.log(result1)
+    </script>
+</body>
+</html>

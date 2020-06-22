@@ -1,0 +1,40 @@
+<html>
+<head></head>
+<body>
+
+    <script>
+        var sortColors = function(nums) {
+        var num0 = 0
+        var num1 = 0
+        var num2 = 0
+        for(var i=0;i<nums.length;i++){
+            switch (nums[i]) {
+                case 2:
+                    nums.splice(i,1)
+                    nums.splice(num0+num1+num2, 0, 2);
+                    num2++
+                    break;
+                case 1:
+                    nums.splice(i,1)
+                    nums.splice(num0+num1, 0, 1); 
+                    num1++
+                    break;
+                case 0:
+                    nums.splice(i,1)
+                    nums.splice(num0, 0, 0); 
+                    num0++
+                    break;
+                default:
+                    break;
+            }
+        }
+        return nums;
+    };
+    console.log(sortColors([2,0,2,1,1,0]))
+    </script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件模型</title>
+	</head>
+	<!-- <body>
+		<div onclick="clickdiv()">
+			<section onclick="clicksection()">
+				<p onclick="clickp()">目标事件</p>
+			</section>
+		</div>
+		<script type="text/javascript">
+			
+			window.onload = ()=>{
+				var phases = {
+				  1: 'capture',
+				  2: 'target',
+				  3: 'bubble'
+				};
+				var div = document.getElementsByTagName('div')[0];
+				var section = document.getElementsByTagName('section')[0];
+				var p = document.getElementsByTagName('p')[0];
+
+				div.addEventListener('click', callback, true);
+				section.addEventListener('click', function(e){
+					e.cancelBubble=true
+				}, true);
+				section.addEventListener('click', function(e){
+					console.log('这是另个div捕获节点')
+				}, true);
+				p.addEventListener('click', callback, true);
+				div.addEventListener('click', callback, false);
+				p.addEventListener('click', callback, false);
+				section.addEventListener('click', callback, false);
+				window.addEventListener('click', callback, true);
+				window.addEventListener('click', callback, false);
+				function callback(event) {
+				  var tag = event.currentTarget.tagName;
+				  var phase = phases[event.eventPhase];
+				  console.log("Tag: '" + tag + "'. EventPhase: '" + phase + "'");
+				}
+
+				clickdiv = ()=>{
+					console.log('div')
+				}
+				clicksection = ()=>{
+					console.log('section')
+				}
+				clickp = ()=>{
+					console.log('p')
+				}
+
+
+				// div.onclick  = (e) => {
+				// 	console.log('div')
+				// }
+				// section.onclick  = (e) => {
+
+				// 	console.log('section')
+				// }
+				// p.onclick  = (e) => {
+				// 	// e.stopPropagation()
+				// 	console.log('p')
+				// }
+
+			}
+		</script> 
+	</body>-->
+
+	<body>
+		<ul class="box" id ='box'>
+			<li data-index = '1'>1</li>
+			<li data-index = '2'>2</li>
+			<li data-index = '3'>3</li>
+		</ul>
+		<script>
+			let box = document.getElementById('box')
+			box.addEventListener('click', function(event) {
+				let tagName = event.target.tagName
+				if (tagName === 'LI') {
+					console.log(event.target.dataset.index)
+				}
+			}, false) // 这里是false标识在冒泡阶段触发
+		</script>
+	</body>
+</html>

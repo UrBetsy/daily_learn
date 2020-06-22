@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+	<div id="turnplate"></div>
+	<script>
+		//js中有六大类型(除symbol)
+		//基本类型 Number,String,Boolean,Undefined,Null
+		//引用类型object
+		var arr = [1,2,3,4]
+		var obj = {
+		name:'haha',
+		age:40,
+		sex:'male'
+		}
+		var str = 'abcjd'
+		var num = 10
+		var pnull = null
+		var pundefined = undefined
+		var bool = true
+		var u
+     
+		console.log(arr) // [1,2,3,4]
+		console.log(obj) // {name:'haha',age:40,sex:'male'}
+		console.log(str) //abcjd
+		console.log(num) //10
+		console.log(pnull) //null
+		console.log(pundefined) //undefined
+		console.log(bool) //true
+		console.log(u) //undefined
+	//typeof 
+		console.log(typeof(arr)) //object
+		console.log(typeof(obj)) //object
+		console.log(typeof(str)) //string
+		console.log(typeof(num)) //number
+		console.log(typeof(pnull)) //object
+		console.log(typeof(pundefined)) //undefined
+		console.log(typeof(bool)) //boolean
+		console.log(typeof(u)) //undefined
+		//从上面可以看出，对于string,number,undefined,boolean这四种类型，typeof能够正确判断，
+		//但是对与引用类型和null类型无法判断，均为object
+	//instanceof
+	    console.log(arr instanceof Array) //true
+	    console.log(obj instanceof Object) //true
+	    console.log(str instanceof String) //false
+	    console.log(num instanceof Number) //false
+	    console.log(bool instanceof Boolean) //false
+	    console.log(new String('111') instanceof String) //true
+	    console.log(new Number(1) instanceof Number) //true
+	    console.log(new Boolean(true) instanceof Boolean) //true
+	    //从上面可以看出，instanceof可判断变量的构造函数，instance（例子）of（的），即xx的实例。
+	    //暂不讨论unindefuned和null类型
+	//constructor
+	    console.log(arr.constructor === Array) //true
+	    console.log(obj.constructor === Object) //true
+	    console.log(str.constructor === String) //true
+	    console.log(num.constructor === Number) //true
+	    console.log(bool.constructor === Boolean) //true
+		//显然这是判断变量的构造函数
+   //Object.prototype.toString.call()
+        var a = Object.prototype.toString;
+        console.log(a.call(arr)) //[object Array]
+		console.log(a.call(obj)) //[object Object]
+		console.log(a.call(str)) //[object String]
+		console.log(a.call(num)) //[object Number]
+		console.log(a.call(pnull)) //[object Null]
+		console.log(a.call(pundefined)) //[object Undefined]
+		console.log(a.call(bool)) //[object Boolean]
+		console.log(a.call(u)) //[object Undefined
+	</script>
+</body>
+</html>
