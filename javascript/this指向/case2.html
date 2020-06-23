@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+            const fun = function(){
+                console.log('fun',this)
+            }
+            const result = {
+                function1 : function(){
+                    return fun.bind(this)
+                },
+            function2 : fun.bind(this),
+            function3 : () => {
+                    return fun.bind(this)
+                },
+            }
+            result.function3 = fun
+            
+            result.function1()() //对象
+            result.function2()  //winodw
+            result.function3()   //对象
+            result.function4()()  //window
+		</script>
+	</body>
+</html>

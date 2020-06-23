@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>执行输出</title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * demo0
+			 */
+			function test(){
+				console.log(fn())
+				console.log(a)
+				
+				function fn(){
+					return 2
+				}
+				var fn=4
+				var a=1
+				console.log(fn)
+				console.log(a)
+			}
+			test();
+			
+			/*
+			*  demo1
+			*/
+			var color = 'blue';
+			function changeColor() {
+			    var anotherColor = 'red';
+			    function swapColors() {
+			        var tempColor = anotherColor;
+			        anotherColor = color;
+			        color = tempColor;
+			    }
+			    swapColors();
+			}
+			changeColor();
+
+			/**
+			 * demo2
+			 */
+			var name = "window";
+			var p = {
+			  name: 'Perter',
+			  getName: function() {
+			    // 利用变量保存的方式保证其访问的是p对象
+			    var self = this;
+			    return function() {
+			      return self.name;
+			    }
+			  }
+			}
+			var getName = p.getName();
+			var _name = getName();
+			console.log(_name);
+		</script>
+	</body>
+</html>

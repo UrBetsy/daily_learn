@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this指向</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* 案例1
+		*/
+		var a = 20;
+		var obj = {
+		    a: 10,
+		    c: this.a + 20,
+		    fn: function () {
+		        return this.a;
+		    }
+		}
+		console.log('demo1', obj.c);  	// 40
+		console.log('demo1', obj.fn());  // 10
+
+		/*
+		* 为了能够准确判断，我们在函数内部使用严格模式，因为非严格模式会自动指向全局
+		*/
+		function fn() {
+		    'use strict';
+		    console.log('严格模式下的this', this);
+		}
+		fn();    		// undefined -> fn是调用者，独立调用
+		window.fn();  	// Window对象 -> fn是调用者，被window所拥有
+
+		/**
+		*	严格模式下面的this
+		*/
+		'use strict';
+		var a = 20;
+		function foo () {
+		    var a = 1;
+		    var obj = {
+		        a: 10,
+		        c:  this.a + 20,
+		        fn: function () {
+		            return this.a;
+		        }
+		    }
+		    return obj.fn();
+		}
+		console.log(foo());         // 10
+		console.log(window.foo());  // 10
+
+		/*
+		* 案例3
+		*/
+		var a = 20;
+		var foo = {
+		    a: 10,
+		    getA: function () {
+		        return this.a;
+		    }
+		}
+		console.log(foo.getA()); // 10
+		var test = foo.getA;
+		console.log(test());     // 20
+
+		/*
+		* 案例4
+		*/
+		function foo() {
+		    console.log(this.a)
+		}
+		function active(fn) {
+		    fn();           // 真实调用者，为独立调用
+		}
+		var a = 20;
+		var obj = {
+		    a: 10,
+		    getA: foo
+		}
+		active(obj.getA);
+
+		/*
+		*
+		* demo
+		*
+		*/
+		var foo = {
+		    name: 'joker',
+		    showName: function() {
+		      console.log(this.name);
+		    }
+		}
+		var bar = {
+		    name: 'rose'
+		}
+		foo.showName.call(bar);
+
+		a = 'window'
+		var obj = {
+		    a: 20,
+		    getA: function() {
+		    	console.log(this)
+		        setTimeout(function haha() {
+		            console.log(this.a)
+		        }.call(this), 1000)
+		    }
+		}
+
+		obj.getA();
+
+		/**
+		*
+		* demo
+		*/
+		function Person(name, age) {
+			console.log(this)
+		    // 这里的this指向了谁?
+		    this.name = name;
+		    this.age = age;   
+		}
+		Person.prototype.getName = function() {
+			console.log(this)
+		    // 这里的this又指向了谁？
+		    return this.name;
+		}
+		// 上面的2个this，是同一个吗，他们是否指向了原型对象？
+		var p1 = new Person('Nick', 20);
+		p1.getName();
+
+		/*
+		*
+		* demo
+		*
+		*/
+		function add(a, b, c) {
+		    var i = a+b+c;
+		    console.log(i);
+		    return i;
+		}
+		var func = add.bind(undefined, 100);//给add()传了第一个参数a
+		console.log(func)
+		func(1, 2);//103，继续传入b和c
+
+		var func2 = func.bind(undefined, 200);//给func2传入第一个参数，也就是b，此前func已有参数a=100
+		func2(10);//310,继续传入c，100+200+10
+
+		/*
+		*
+		* demo
+		*/
+		var obj = {
+		  a: 10,
+		  b: () => {
+		  	var a= 8
+		    console.log(this.a); // undefined
+		    console.log(this);   // Window对象
+		  },
+		  c: function() {
+		    console.log(this.a); // 10
+		    console.log(this);   // {a: 10, b: ƒ, c: ƒ}
+		  }
+		}
+		obj.b(); 
+		obj.c();
+
+		</script>
+	</body>
+</html>

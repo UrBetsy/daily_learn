@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件模型</title>
+	</head>
+    <body>
+        <ul class="box" id ='box'>
+            <li data-index = '1'>1</li>
+            <li data-index = '2'>2</li>
+            <li data-index = '3'>3</li>
+        </ul>
+        <script>
+            let box = document.getElementById('box')
+            box.addEventListener('click', function(event) {
+                let tagName = event.target.tagName
+                if (tagName === 'LI') {
+                    console.log(event.target.dataset.index)
+                }
+            }, false) // 这里是false标识在冒泡阶段触发
+        </script>
+    </body>
+</html>
