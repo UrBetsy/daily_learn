@@ -1,0 +1,26 @@
+<html>
+<head>最长单调递增子序列</head>
+<body>
+    <script>
+        arr = [1,2,4,5,7,32,7,33,6,8,3];
+        function fn(arr){
+            var c=[];
+            c[0]=1;
+            path = [];
+            path = [[arr[0]]]
+            if(arr.length<2){
+                return arr;
+            }
+            for(var i = 1;i<arr.length;i++){
+                c[i]=1;
+                for(var j=0;j<i;i++){
+                    if(arr[i]>brr[brr.push]){
+                        c[i] = c[j]+1
+                    }
+                }
+            }
+        }
+        console.log(fn(arr))
+    </script>
+</body>
+</html>

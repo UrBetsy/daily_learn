@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>这里是apply & bind & call的用法</title>
+</head>
+<body>
+	<script>
+		/*
+		* 有只猫叫小黑，小黑会吃鱼
+		*/
+		const cat = {
+	    name: '小黑',
+	    eatFish(...args) {
+        console.log('this指向=>', this);
+        console.log('...args', args);
+        console.log(this.name + '吃鱼');
+	    },
+		}
+		/*
+		* 有只狗叫大毛，大毛会吃骨头
+		*/
+		const dog = {
+	    name: '大毛',
+	    eatBone(...args) {
+        console.log('this指向=>', this);
+        console.log('...args', args);
+        console.log(this.name + '吃骨头');
+	    },
+		}
+		cat.eatFish.call(dog, '汪汪汪', 'call')
+		dog.eatBone.call(cat, '喵喵喵', 'call')
+
+		cat.eatFish.apply(dog, ['汪汪汪', 'apply'])
+		dog.eatBone.apply(cat, ['喵喵喵', 'apply'])
+		
+		const test1 = cat.eatFish.bind(dog, '汪汪汪', 'bind')
+		const test2 = dog.eatBone.bind(cat, '喵喵喵', 'bind')
+		test1()
+		test2()
+	</script>
+</body>
+</html>

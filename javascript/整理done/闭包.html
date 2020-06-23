@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>闭包</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* 运行结果 ： 有间隔是输出 666666
+		* 
+		*/
+		for (var i=1; i<=5; i++) {
+			setTimeout(function timer() {
+				console.log(i);
+			}, i*1000 );
+		}
+		/*
+		* 有时间间隔，输入12345
+		*
+		*/
+		for (var i=1; i<=5; i++) {
+			(function(i){
+				setTimeout( function timer() {
+					console.log(i);
+				}, i*1000 );
+			})(i)
+		}
+		/*
+		* 没有时间间隔直接输入12345
+		*
+		*/
+		for (var i=1; i<=5; i++) {
+			setTimeout( (function timer() {
+				console.log(i);
+			})(), i*1000 );
+		}
+		/*
+		* 有间隔的输出 1 2 3 4 5 6
+		*
+		*/
+		for (var i=1; i<=5; i++) { 
+			setTimeout( (function(i) {
+				return function() {
+					console.log(i);
+				}
+			})(i), i*1000 );
+		}
+		// 待整理ing
+		for(var i = 0 ; i < 10;i++){
+			setTimeout(function(){
+				console.log(i)
+			}(),10)
+		}
+		</script>
+	</body>
+</html>

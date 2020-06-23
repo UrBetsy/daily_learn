@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <script>
+            var arr = [1,2,[3,4],[5,6,[7,8],9],10];
+            function flattern1(list,depth=0){
+                var res = [];
+                for(var item of list){
+                    if(Array.isArray(item) && depth>0){
+                        //深度
+                        var child = flattern1(item,depth-1);
+                        res = res.concat(child)
+                    }else{
+                        res.push(item);
+                    }
+                }
+                return res;
+            }
+            function flattern2(list,depth) {
+                result = [].concat(...list);
+                var i = 0;
+                while ( i<depth){
+                    result = [].concat(...result);
+                    i++;
+                }
+                return result
+            }
+            console.log(flattern1(arr,1))
+            console.log(flattern2(arr,1))
+            
+        </script>
+    </body>
+</html>
+
+
+
+

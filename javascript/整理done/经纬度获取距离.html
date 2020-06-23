@@ -1,0 +1,24 @@
+<html>
+<head>经纬度求距离</head>
+<body>
+    <!-- 这里是输出两个点的经纬度，然后求两个点之间的距离 -->
+    <script>
+        function getDistance(lat1, lng1, lat2, lng2){
+            let r1 = lat1 * Math.PI / 180,
+            r2 = lat2 * Math.PI / 180,
+            a = r1 - r2,
+            b = lng1 * Math.PI / 180 - lng2 * Math.PI / 180,
+            s = 6378.137 * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) + Math.cos(r1) * Math.cos(r2) * Math.pow(Math.sin(b/2),2)));
+            return Math.round(s * 10) / 10;
+        }
+        console.log(getDistance(39.953237,116.423785,39.956506,116.428638))
+        let dis = 12.3223
+        let distance = dis > 1 ? dis.toFixed(1)  + 'km' : ( dis ? parseInt(dis * 1000) + 'm' :'' );
+        console.log(distance)
+    </script>
+</body>
+</html>
+
+
+
+
