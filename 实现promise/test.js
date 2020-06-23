@@ -1,31 +1,40 @@
 
   var MyPromise = require('./MyPromise.js');
 //测试
-  console.log(Reflect.ownKeys(MyPromise))
-  console.log(MyPromise.length)
-  let length1 = Symbol()
-  MyPromise[length1] = 2
-  console.log(MyPromise.length1)
+  // console.log(Reflect.ownKeys(MyPromise))
+  // console.log(MyPromise.length)
+  // let length1 = Symbol()
+  // MyPromise[length1] = 2
+  // console.log(MyPromise.length1)
 
-  new MyPromise(function (resolve, reject) {
-      console.log('start new Promise...');
-      var timeOut = Math.random() * 2;
-      console.log('set timeout to: ' + timeOut + ' seconds.');
-      setTimeout(function () {
-          if (timeOut < 1) {
-              console.log('call resolve()...');
-              resolve('200 OK');
-          }
-          else {
-              console.log('call reject()...');
-              reject('timeout in ' + timeOut + ' seconds.');
-          }
-      }, timeOut * 1000);
+  let prpr = new MyPromise(function (resolve, reject) {
+    setTimeout(() => {
+      resolve('我是resolve')
+    }, 100);
+      // console.log('start new Promise...');
+      // var timeOut = Math.random() * 2;
+      // console.log('set timeout to: ' + timeOut + ' seconds.');
+      // resolve('wo')
+      // setTimeout(function () {
+      //     if (timeOut < 1) {
+      //         console.log('call resolve()...');
+      //         resolve('200 OK');
+      //     }
+      //     else {
+      //         console.log('call reject()...');
+      //         reject('timeout in ' + timeOut + ' seconds.');
+      //     }
+      // }, timeOut * 1000);
   }).then(function (r) {
-      console.log('Done: ' + r);
-  }).catch(function (reason) {
-      console.log('Failed: ' + reason);
-  });
+      console.log('我是then', r)
+      return 'haha'
+  })
+  console.log('prpr',prpr)
+  // .then(res=> {
+  //   console.log(res)
+  // }).catch(function (reason) {
+  //     console.log('Failed: ' + reason);
+  // });
 
 //测试catch
   // var promise1 = new MyPromise(function(resolve, reject) {

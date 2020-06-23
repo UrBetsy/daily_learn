@@ -86,7 +86,9 @@
 
   //MyPromise.prototype.then
   MyPromise.prototype.then = function (onFulfilled, onRejected) {
-    return handle(this,onFulfilled, onRejected)
+    let pr =  handle(this,onFulfilled, onRejected)
+    console.log(pr)
+    return pr
   }
 
   function handle(_self,onFulfilled, onRejected) {
@@ -219,7 +221,7 @@
 
   function doExecutor(executor,promise){
     try {
-      executor(_resolve.bind(promise), _reject.bind(promise)) 
+      executor(_resolve.bind(promise), _reject.bind(promise)) // 这里只是传入了两个参数，是否执行看实例中是否使用
     } catch (err) {
       _reject(err,promise)
     }
