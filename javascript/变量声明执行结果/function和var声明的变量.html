@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>function和var声明的变量</title>
+	</head>
+	<body>
+		<script>
+            /***
+             * function方法提升最高，但是执行过程中add重新赋值了
+             */ 
+            var x=1, y=0, z;
+            console.log(add)            // function() { return x = x + 3}
+            var add = function(x) {
+                return x = x +1;
+            }
+            function add(x) {
+                return x = x+3;
+            }
+            console.log(add)            // function() { return x = x + 3}
+            y = add(x)                                 
+            z = add(y)
+            console.log(x,y,z)          // 1 2 3
+		</script>
+	</body>
+</html>

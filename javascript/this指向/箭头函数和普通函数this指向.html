@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>箭头函数和普通函数this指向</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* 箭头函数和普通函数this指向
+		* 箭头函数不能形成作用域？
+		*/
+		var obj = {
+		  a: 10,
+		  b: () => {
+		  	var a= 8
+		    console.log(this.a); // undefined
+		    console.log(this);   // Window对象
+		  },
+		  c: function() {
+		    console.log(this.a); // 10
+		    console.log(this);   // {a: 10, b: ƒ, c: ƒ}
+		  }
+		}
+		obj.b(); 
+		obj.c();
+		</script>
+	</body>
+</html>

@@ -1,8 +1,13 @@
 <html>
-<head></head>
+    <head>
+        <title>XXS攻击</title>
+    </head>
 <body>
-<!-- 这里是输出两个点的经纬度，然后求两个点之间的距离 -->
     <script>
+        /**
+         * ' onclick=alert(/xss/) //    就可以完成xss
+         * '> <img src=# onerror=alert(/xss2/) /><'
+         */ 
         function test() {
             let str = document.getElementById("text").value
             console.log(str)
@@ -11,12 +16,7 @@
     </script>
     <div id="t"></div>
     <input type="text" id ='text' value="" /> 
-    <input type="button" id ='s' value="write" onclick="test()" />
-
-    <!-- 
-        ' onclick=alert(/xss/) //    就可以完成xss
-        '> <img src=# onerror=alert(/xss2/) /><'
-    --> 
+    <input type="button" id ='s' value="write" onclick="test()" />  
 </body>
 </html>
 

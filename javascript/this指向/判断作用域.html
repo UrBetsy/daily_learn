@@ -2,28 +2,28 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>判断作用域</title>
 	</head>
 	<body>
 		<script>
             const fun = function(){
-                console.log('fun',this)
+                console.log('this是：',this)
             }
             const result = {
                 function1 : function(){
                     return fun.bind(this)
                 },
-            function2 : fun.bind(this),
-            function3 : () => {
+                function2 : fun.bind(this),
+                function4 : () => {
                     return fun.bind(this)
                 },
             }
             result.function3 = fun
             
             result.function1()() //对象
-            result.function2()  //winodw
+            result.function2()   //winodw
             result.function3()   //对象
-            result.function4()()  //window
+            result.function4()() //window
 		</script>
 	</body>
 </html>

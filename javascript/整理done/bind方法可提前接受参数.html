@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>bind方法的应用</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* bind方法的应用，bind方法可提前接受参数
+		*/
+		function add(a, b, c) {
+		    var i = a+b+c;
+		    console.log(i);
+		    return i;
+		}
+		var func = add.bind(undefined, 100);//给add()传了第一个参数a
+		console.log(func)   // ƒ add(a, b, c) {
+							//		var i = a+b+c;
+							//		console.log(i);
+							//		return i;
+							//	}
+		func(1, 2);         //103，继续传入b和c
+
+		var func2 = func.bind(undefined, 200);//给func2传入第一个参数，也就是b，此前func已有参数a=100
+		func2(10);          // 310,继续传入c，100+200+10
+		</script>
+	</body>
+</html>

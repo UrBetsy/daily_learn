@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>function关键字声明提升最高</title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 	function关键字声明提升最高
+			 */
+			function test(){
+				console.log(fn())   // 2
+				console.log(a)		// undefined
+				
+				function fn(){
+					return 2
+				}
+				var fn = 4			
+				var a = 1
+				console.log(fn)		// 4
+				console.log(a)		// 1
+			}
+			test();
+			
+			/*
+			* 这里是一个变量提升的考察
+			* function 关键字声明的是提升到最高
+			*/
+			console.log(test)   //ƒ test(){
+								//		console.log('2')
+								//	}
+			console.log(a)      //undefined
+			function test(){
+				console.log('hahah')
+			}
+			function test(){
+				console.log('2')
+			}
+			test = 'test'
+			var a = 'a' 
+			console.log(test) //test
+			console.log(a)    //a
+			
+        </script>
+    </body>
+</html>

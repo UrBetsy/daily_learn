@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>不要试图改变this</title>
+	</head>
+	<body>
+		<script>
+		/**
+		* 不要试图修改this，会报错
+		*/
+		var a = 10;
+		var obj = {
+			a: 20
+		}
+		function fn () {
+			this = obj; 
+			// 这句话试图修改this，运行后会报错 
+			// ReferenceError: Invalid left-hand side in assignment
+			console.log(this.a);
+		}
+		</script>
+	</body>
+</html>

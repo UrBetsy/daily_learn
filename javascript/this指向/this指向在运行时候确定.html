@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>this的指向在运行的时候确定</title>
+	</head>
+	<body>
+		<script>
+		/**
+		 * 这里是一个例子，定义时候的作用域，和执行时候的作用于可能并不一样
+		 */
+		var a = 20;
+		function fn() {
+			function foo() {
+				console.log(this) 		// Window对象
+				console.log(this.a);	// 20
+			}
+			foo();
+		}
+		fn();
+		</script>
+	</body>
+</html>

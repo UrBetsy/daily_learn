@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>方法各种被调用</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* foo方法各种被调用，但是最后还是在全局执行
+		*/
+		function foo() {
+		    console.log(this.a)
+		}
+		function active(fn) {
+		    fn();           // 真实调用者，为独立调用
+		}
+		var a = 20;
+		var obj = {
+		    a: 10,
+		    getA: foo
+		}
+		active(obj.getA);   // 20
+		</script>
+	</body>
+</html>

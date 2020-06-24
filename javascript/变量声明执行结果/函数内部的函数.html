@@ -1,0 +1,22 @@
+<html>
+ <head>函数内部的函数</head>
+<body>
+    <script>
+        /*
+        *  函数内部的函数
+        */
+        var color = 'blue';
+        function changeColor() {
+            var anotherColor = 'red';
+            function swapColors() {
+                var tempColor = anotherColor;
+                anotherColor = color;
+                color = tempColor;
+            }
+            swapColors();
+        }
+        changeColor();
+        console.log(color)   // red
+    </script>
+</body>
+</html>

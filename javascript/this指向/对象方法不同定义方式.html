@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象方法不同定义方式</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* 不同的定义方式，c定义的方法没有生成作用域？不确定
+		*/
+		var a = 20;
+		var obj = {
+		    a: 10,
+		    c: this.a + 20,
+		    fn: function () {
+		        return this.a;
+		    }
+		}
+		console.log('demo1', obj.c);  	 // 40
+		console.log('demo1', obj.fn());  // 10
+		</script>
+	</body>
+</html>

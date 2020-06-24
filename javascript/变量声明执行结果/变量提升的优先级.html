@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>变量提升的优先级</title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * 变量提升也有优先级, 函数声明 > arguments > 变量声明
+			 */
+			console.log(c); 	// ƒ c(a) {
+								//     console.log(a); // [Function: c]
+								//     var a = 3;
+								//     function a(){
+								//     }
+								//     console.log(a) // 3
+								// }
+			var c;
+			function c(a) {
+			    console.log(a); // ƒ a(){
+			    				//	}
+			    var a = 3;
+			    function a(){
+			    }
+			    console.log(a)  // 3
+			}
+			c(2);
+		</script>
+	</body>
+</html>

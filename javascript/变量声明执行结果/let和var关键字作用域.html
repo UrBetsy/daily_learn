@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对象利用变量保存this</title>
+	</head>
+	<body>
+		<script>
+			/**
+			 * let 关键字定义会形成暂时性，在let定义之前不能调用这个变量，会报错
+			 * 这个方法是自执行的箭头函数
+			 */
+			var a1 = 2;
+			(() => {
+				console.log(a1) 
+				let a1 = 1
+			})()
+			// Uncaught ReferenceError: Cannot access 'a' before initialization
+			/***
+			 * let 关键字定义会形成暂时性，在let定义之前不能调用这个变量，会报错
+			 * 这个方法是被调用执行的
+			 */
+			var a2 = 2;
+			function fn() {
+			    console.log(a2)
+			    let a2 = 1;
+			}
+			fn()
+			// Uncaught ReferenceError: Cannot access 'a' before initialization
+			/***
+			 * let 关键字定义会形成暂时性，在let定义之前不能调用这个变量，会报错
+			 * 这个方法是自执行的普通函数
+			 */
+			var a3= 2;
+			(function() {
+			    console.log(a3)
+			    let a3 = 1
+			})()
+			// Uncaught ReferenceError: Cannot access 'a' before initialization
+		</script>
+	</body>
+</html>

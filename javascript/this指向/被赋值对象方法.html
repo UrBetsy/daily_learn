@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>被赋值对象方法</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* 相同方法，调用的对象不同，this指向不同
+		*/
+		var a = 20;
+		var foo = {
+		    a: 10,
+		    getA: function () {
+		        return this.a;
+		    }
+		}
+		console.log(foo.getA()); // 10
+		var test = foo.getA;
+		console.log(test());     // 20
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>严格模式调用对象方法</title>
+	</head>
+	<body>
+		<script>
+		/**
+		*	严格模式下面的this
+		*/
+		'use strict';
+		var a = 20;
+		function foo () {
+		    var a = 1;
+		    var obj = {
+		        a: 10,
+				c:  this.a + 20,   
+				// 当调用者是undefined的时候，这一句会报错，Cannot read property 'a' of undefined
+		        fn: function () {
+		            return this.a;
+		        }
+		    }
+		    return obj.fn();
+		}
+		console.log(foo());         // 调用者是undefined
+		console.log(window.foo());  // 调用者是window
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>属性连等赋值</title>
+	</head>
+	<body>
+		<script>
+            /***
+             *  对象赋值
+             */ 
+            var p = 1
+            var d = {}
+            d.x = 3
+            console.log(d)   // {x: 3}
+            console.log(p=d) // {x: 3}
+            /*
+            * 属性连等赋值
+            */
+            var a = {x:1}
+            var b = a
+            a.x = a = {n:1}
+            console.log('a',a) // {n: 1}
+            console.log('b',b) // {x: {n: 1}}
+		</script>
+	</body>
+</html>

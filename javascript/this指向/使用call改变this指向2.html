@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>使用call改变this指向2</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* 使用call改变this指向2
+		*/
+		a = 'window'
+		var obj = {
+		    a: 20,
+		    getA: function() {
+		    	console.log(this)	    // obj对象
+		        setTimeout(function haha() {
+		            console.log(this.a) // '20'
+		        }.call(this), 1000)
+		    }
+		}
+		obj.getA();
+		</script>
+	</body>
+</html>

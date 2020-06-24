@@ -1,3 +1,6 @@
+/**
+ * 宏任务和微任务
+ */
 console.log(1);
 setTimeout(() => {
   console.log(2);

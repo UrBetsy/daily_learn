@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>严格模式调用全局方法</title>
+	</head>
+	<body>
+		<script>
+		/*
+		* 为了能够准确判断，我们在函数内部使用严格模式，因为非严格模式会自动指向全局
+		*/
+		function fn() {
+		    'use strict';
+		    console.log('严格模式下的this', this);
+		}
+		fn();    		// undefined -> fn是调用者，独立调用
+		window.fn();  	// Window对象 -> fn是调用者，被window所拥有
+		</script>
+	</body>
+</html>
