@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>fetch设置网络请求超时时间</title>
+    </head>
+    <body>
+        <div id='div'>点我发送</div>
+        <script>
+            /**
+             *  timeoutPromise模拟了一个超时请求
+             *  requestPromise是一个普通的请求，需要启动8080端口服务
+             *  用promise.race模拟了超时时间
+             *  使用AbortController对象，可以撤销未完成的请求: https://developer.mozilla.org/zh-CN/docs/Web/API/FetchController
+             */ 
+            let controller = new AbortController();       
+            let signal = controller.signal;
+            document.getElementById('div').addEventListener('click', raceFn);
+            function requestPromise (url) {
+                return fetch(url, {signal: signal})
+                .then(res => {
+                    console.log('普通请求回调')
+                    return res
+                })
+            }
+            function timeoutPromise (url) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        resolve(new Response("timeout", { status: 504, statusText: "timeout " }));
+                        controller.abort()
+                    }, 0)
+                }).then(res => {
+                    console.log('超时请求回调')
+                    return res
+                })
+            }
+            function raceFn () {
+                Promise.race([timeoutPromise(1000), requestPromise('http://localhost:8080')])
+                .then(res => {
+                    console.log('这里是race——resolve', res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
+        </script>
+    </body>
+</html>

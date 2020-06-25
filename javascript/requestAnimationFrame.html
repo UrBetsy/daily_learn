@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>H5动画</title>
+    </head>
+    <style>
+        #animation {
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+    </style>
+    <body>
+        <div id='animation'></div>
+        <button id='stop'>停止</button>
+        <script>
+            var deg = 0;
+            var id = 0;
+            var div = document.getElementById('animation');
+            div.addEventListener('click', function() {
+                var self = this;
+                requestAnimationFrame(function change(){
+                    // self.style.transform = 'rotate(' + (deg++) + 'deg)';
+                    self.style.transform = `rotate(${++deg}deg`
+                    if (id < 1000) {
+                      id = requestAnimationFrame(change)  
+                      console.log(id)
+                    }
+                })
+            })
+            document.getElementById('stop').onclick = function () {
+                console.log(id)
+                cancelAnimationFrame(id)
+            }
+        </script>
+    </body>
+</html>

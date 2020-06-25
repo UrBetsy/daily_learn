@@ -14,7 +14,7 @@ var deepClone = function(param,param2){
 			param2[i] = (param[i] instanceof Array) ? [] : {}
 			deepClone(param[i],param2[i])
 		}else{
-			param2[i]=param[i]
+			param2[i] = param[i]
 		}
 	}
 	return param2
