@@ -14,8 +14,10 @@
     <button id="sendBtn">发送</button>
     <div id="recv"></div>
     <script type="text/javascript">
-        // //官方示例的服务器
-        // var WebSocket = new WebSocket("ws://echo.websocket.org");
+        /**
+         * 直接在浏览器中打开index.html也是可以的 
+         * 不非得通过nodejs打开这个网页
+         */
         // wsServer搭建的服务器
         var WebSocket = new WebSocket("ws://localhost:3000/");
         WebSocket.onopen = function(){

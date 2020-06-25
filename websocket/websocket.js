@@ -1,15 +1,16 @@
+/**
+ * 这里是websocket服务器
+ */
 // 引入WebSocket模块
 var ws = require('nodejs-websocket')
 var PORT = 3000
- 
 // on就是addListener，添加一个监听事件调用回调函数
 // Scream server example:"hi"->"HI!!!",服务器把字母大写
 var server = ws.createServer(function(conn){
     console.log('New connection')
     conn.on("text",function(str){
         console.log("Received"+str)
-        // conn.sendText(str.toUpperCase()+"!!!") //大写收到的数据
-        conn.sendText('haha')  //收到直接发回去
+        conn.sendText(str.toUpperCase()+"!!!")
     })
     conn.on("close",function(code,reason){
         console.log("connection closed")

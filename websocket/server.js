@@ -8,7 +8,7 @@ let mime={
 //创建一个函数，req代表客户端，res代表服务器可写流
 let listener=(req,res)=>{
 //res是可写流，有write和end
-    console.log('进度list人体')
+    console.log('进入监听函数listener')
     if(req.url==="/"){
         //设置编码
         res.setHeader('Content-Type','text/html;charset=utf-8');
@@ -23,20 +23,5 @@ let listener=(req,res)=>{
         }
     }
 }
-let port=8080;
 //创建一个服务，放入一个监听函数，
-let server=http.createServer(listener);
-//
-// server.listen(port,function () {
-//     //启动成功后
-//     console.log(`start${port}`);
-//     fs.readFile('./video.png','base64',function(err,data){
-//         fs.writeFile('./b.png',data.toString(),'base64',function(err){
-//             if(err){
-//                 console.log('操作失败')
-//             }else{
-//                 console.log('操作成功')
-//             }
-//         })
-//     })
-// })
+let server = http.createServer(listener).listen(8080,'127.0.0.1')
