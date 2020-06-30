@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>weakmap</title>
+    </head>
+    <body>
+        <script>
+            // let arr = [{age: 1}, {age: 3}, {age: 5}, {age: 2}, {age: 2}, {age: 5}]
+            let wm = new WeakMap()
+            wm.set({}, 1)
+            console.log(wm.has({}))
+            // arr.forEach(element => {
+            //     console.log(wm.has(element))
+            //     wm.set(element, 1)
+            //     // if (!wm.get(element)) {
+            //     //     wm.set(element, 1)
+            //     // } else {
+            //     //     wm.set(element, wm.get(element) + 1)
+            //     // }
+            // });
+            // console.log(wm)
+        </script>
+    </body>
+</html>
+

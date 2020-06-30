@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>手写instanceof</title>
+  </head>
+  <body>
+    <script>
+
+      function myInstanceof (target, origin) {
+          if (typeof target !== 'object' || origin === null) return false
+          let proto = Object.getPrototypeOf(target);
+          /***
+           * getPrototypeOf 就相当于 target.__proto__
+           * 为什么不使用__proto__，因为__proto__不是写在es6正文，而是附件中，并不是标准的对外暴露的api
+           */ 
+          while (proto) {
+              if (proto === origin.prototype) {
+                return true
+              }
+              proto = Object.getPrototypeOf(proto);
+          }
+          return false
+      }
+
+      let arr = [1,2,3]
+      console.log(myInstanceof(arr, Array))
+    </script>
+  </body>
+</html>
+

@@ -52,6 +52,20 @@
 				console.log(i)
 			}(),10)
 		}
+		/**
+		* 字节面试题：实现一个每秒输出hello world的函数，要求第三次输出后停止，用闭包实现
+		* 利用一个闭包保存变量i
+		*/
+		function fn(str, count) {
+			for (var i = 0; i < 3; i++) {
+				setTimeout( (function(i) {
+					return function() {
+						console.log(str)
+					}
+				})(i), i * count)
+			}
+		}
+		fn('Hello world', 1000)
 		</script>
 	</body>
 </html>
