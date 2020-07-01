@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>catch住promise的err</title>
+    </head>
+    <body>
+        <script>
+            /**
+             * catch的用法，会将try中代码的错误传下来
+             */ 
+            try {
+                console.log(a.a)
+            } catch (err){
+                console.log('这里是是catch', err)
+            }
+            /**
+             * 能catch promise中间的报错吗
+             */ 
+            try {
+                new Promise((resolve, reject) => {
+                    a.a
+                    return '这里是返回'
+                }).then (res => {
+                    console.log(res)
+                    return '这里是第一个then返回'
+                }).then (res => {
+                    console.log(res)
+                    return '这里是第一个then返回'
+                })
+                // .catch (err => {
+                //     console.log('这里是catch方法', err)
+                // })
+            } catch (err) {
+                /**
+                 * 这里是catch不住primise中的错误的
+                 * 但是能catch primise外面的错误
+                 */
+                console.log('catch primise的错误', err)
+            }
+        </script>
+    </body>
+</html>
