@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>找到素有以h开头的元素</title>
+    </head>
+    <body>
+        <h1>我是h1</h1>
+        <h2>我是h2</h2>
+        <h2>我是h2</h2>
+        <h2>我是h2</h2>
+        <h3>我是h3</h3>
+        <h4>我是h4</h4>
+        <h5>我是h5</h5>
+        <script>
+            var allElements = document.querySelectorAll('*');
+            function findStartWithH(allElements) {
+                let result = []
+                allElements.forEach(item => {
+                    if(item.tagName.startsWith('H')) {
+                        result.push(item.tagName)
+                    }
+                })
+                let resset = new Set(result);
+                return [...resset];
+            }
+            console.log(findStartWithH(allElements))
+        </script>
+    </body>
+</html>
