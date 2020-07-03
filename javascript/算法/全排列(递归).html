@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>全排列</title>
+    </head>
+    <body>
+        <script>
+            let str = 'abc'
+            let arr = []
+            function allPermutation(str, from, to) {
+                if (from === to) {
+                    arr.push(str)
+                    return
+                } 
+                for (let i = from; i <= to; i++) {
+                    str = swap(str, i, from);
+                    allPermutation(str, from + 1, to)
+                    str = swap(str, i, from);
+                } 
+            }
+
+            function swap(str, i, j) {
+                let arr = str.split('')
+                let itemi = arr[i];
+                let itemj = arr[j];
+                arr.splice(i, 1, itemj)
+                arr.splice(j, 1, itemi)
+                return arr.join('')
+            }
+
+            allPermutation(str, 0, str.length - 1,);
+            console.log(arr)
+        </script>
+    </body>
+</html>
+

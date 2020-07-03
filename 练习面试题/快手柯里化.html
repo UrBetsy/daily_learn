@@ -1,0 +1,38 @@
+ <html>
+    <head>
+        <title>快手柯里化</title>
+    </head>
+    <body>
+        <script>
+            /**
+             * 5.实现一个函数 function A(){}
+             * A(1)() = 1
+             * A(1)(2)() = 3
+             * A(1)(2)(3)() = 6
+             */ 
+
+            function A(first, second) {
+                let _arg = !second ? [first] : [first, ...second];
+                return first
+                ? (arg) => A(arg, _arg)
+                : add(_arg)
+                
+            }
+            function add() {
+                let arr = Array.from(arguments[0])
+                let res = arr.reduce((total, current) => {
+                    return current ? total + Number(current) : total
+                }, 0)
+                return res
+            }
+
+            console.log(A(1)())
+            console.log(A(1)(2)())
+            console.log(A(1)(2)(3)())
+        </script>
+    </body>
+ </html>
+ 
+
+ 
+

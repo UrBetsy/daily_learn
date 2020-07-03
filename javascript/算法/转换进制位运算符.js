@@ -1,3 +1,6 @@
+/**
+ * 十进制转十六进制
+ */
 function trans() {
     let i;
     let temp = 0;
