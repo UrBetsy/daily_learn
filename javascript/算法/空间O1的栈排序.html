@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>空间复杂度很低栈排序</title>
+    </head>
+    <body>
+        <script>
+        /**
+         * 这道题目的限制就是用常数的空间度
+         * 但是而且只能pop，push，因为是用栈实现的
+         * 所以这道题的思想是用了冒泡排序
+         * 但是时间复杂度就很高了
+         */
+        let arr = [7,6,5,4,3,2,1]
+        function sort(stack) {
+            const _sort = () => {
+                if (stack.length <= 1) return
+                let num = stack.pop()
+                if (num < stack[stack.length - 1]) {
+                    let temp = stack.pop()
+                    stack.push(num)
+                    num = temp
+                    _sort(stack)
+                } else {
+                    _sort(stack)
+                }
+                stack.push(num)
+            }
+        
+            let index = stack.length
+            while (index > 0) {
+                _sort()
+                index--
+            }
+            return stack
+        }
+
+        console.log(sort(arr))
+        </script>
+    </body>
+</html>
