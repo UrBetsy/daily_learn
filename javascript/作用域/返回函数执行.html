@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>输出什么</title>
+    </head>
+    <body>
+        <script>
+            // var count = 10
+            // function a() {
+            //     console.log(count + 10)
+            // }
+            // function b() {
+            //     var count = 20;
+            //     console.log(this.count)
+            // }
+            // b()
+
+
+
+            var a = 10;  
+            function test() {  
+                a = 100;  
+                console.log(a);  
+                console.log(this.a); 
+                console.log(this) 
+                var a;
+                console.log(a); 
+            }
+            test();
+        </script>
+    </body>
+</html>
+

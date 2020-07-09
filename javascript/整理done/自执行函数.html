@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>javascript中的自执行函数</title>
+    </head>
+    <body>
+        <script>
+        /**
+         * 第一种写法是把函数体括起来并且调用
+         */
+        (function testA () {
+            console.log('我是A', [...arguments]);
+        })()
+        /***
+         * 第二种方法是将方法的调用赋值给一个变量，那么就被被执行了
+         * 如果不赋值给变量的话，会报错
+         */
+        let b = function testB() {
+            console.log('我是B', [...arguments]);
+        }()
+        /***
+         * 这中写法是对函数调用进行逻辑运算，和上面的一个道理，都是要让函数的调用执行
+         */ 
+        true && function testC() {
+            console.log('我是C', [...arguments]);
+        }()
+        </script>
+    </body>
+</html>
+
