@@ -2,12 +2,11 @@ let pendingArr = []
 var hasFetch = false
 function fetchRequest() {
     if (hasFetch) {
-        let p = new Promise(resolve => {
+        return new Promise(resolve => {
             pendingArr.push(res => {
                 resolve(res)
             })
         })
-        return p;
     }
     
     hasFetch = true;

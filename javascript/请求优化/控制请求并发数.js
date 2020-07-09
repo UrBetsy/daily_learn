@@ -17,6 +17,7 @@ function handleFetchQueue(urls, max, callback) {
       }).catch(e => {
         results.push(e)
       });
+      console.log(req)
       if (requestsQueue.push(req) < max) {
         handleRequest(urls[++i])
       }
