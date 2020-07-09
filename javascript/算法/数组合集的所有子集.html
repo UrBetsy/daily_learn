@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>空间复杂度很低栈排序</title>
+    </head>
+    <body>
+        <script>
+        /***
+         * 这是一个全排列的问题
+         * 用的算法是回溯的方法
+         * i表示长度，长度分别为0， 1，2，3，4.。。的排列
+         * 每个长度中，有用回溯的方法，从不同的起点开始排列
+         */ 
+        let res = []
+        function allChildren(arr, start, len, list) {
+            // 开始元素超出arr长度， 或者是len == 0
+            if (len === 0) {
+                res[res.length] = [].concat(list);
+                return
+            }
+                
+            // 开始的元素
+            for (var i = start; i < arr.length; i++ ) {
+                list = list.concat(arr[i])
+                allChildren(arr, i + 1, --len, list)
+                list.pop()
+                ++len
+            }
+        }
+
+        let arr = [1,2,3,4]
+        // i 表示长度
+        for (var i = 0; i <= arr.length; i++) {
+            allChildren(arr, 0, i, [])
+        }
+        console.log(res)
+        </script>
+    </body>
+</html>
