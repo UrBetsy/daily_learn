@@ -1,0 +1,5 @@
+console.log(typeof function (){})
+console.log(typeof Array)
+console.log(typeof Object)
+console.log(typeof [])
+console.log(typeof {})

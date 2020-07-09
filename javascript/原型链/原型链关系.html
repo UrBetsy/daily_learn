@@ -6,17 +6,19 @@
         <script>
             function A(){}   
             var a = new A();
-            a.__proto__
-            a.prototype
-            A.__proto__
-            A.prototype
+            // a.__proto__
+            // a.prototype
+            // A.__proto__
+            // A.prototype
 
-            console.log(a) // A {}
-            console.log(A)
+            console.log(a.constructor)
+            // console.log(a) // A {}
+            // console.log(A)s
             // console.log(a.__proto__)  // Object
             // console.log(a.prototype)  // undefined
             // console.log(A.__proto__)  // f()
             // console.log(A.prototype)  // Function
+            console.log(a.__proto__.constructor)
         </script>
     </body>
 </html>

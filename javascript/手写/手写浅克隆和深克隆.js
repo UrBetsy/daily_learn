@@ -38,8 +38,20 @@ var obj = {
 // ccc.obj.one= 'haha'
 // console.log('ccc',ccc)
 // console.log('obj',obj)
-let ddd = deepClone(obj)
-obj.obj.two.ee = '777'
-console.log(obj)
-console.log(ddd)
+/***
+ * 深拷贝
+ */ 
+// let ddd = deepClone(obj)
+// obj.obj.two.ee = '777'
+// console.log(obj)
+// console.log(ddd)
 
+/***
+ * 用一种很简单的方法实现深拷贝
+ */
+
+let obj2 = JSON.parse(JSON.stringify(obj))
+console.log(obj2)
+obj.obj.two.ee = '88'
+console.log(obj)
+console.log(obj2)
