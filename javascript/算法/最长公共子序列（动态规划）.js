@@ -16,9 +16,9 @@ function maxCommon(str1, str2) {
         for (var j = 0; j < length2; j++) {
             if (str1[i] === str2[j]) {
                 if (i === 0 || j === 0) {
-                positionArr[i][j] = str1[i];
+                    positionArr[i][j] = str1[i];
                 } else {
-                positionArr[i][j] = positionArr[i-1][j-1] + str1[i]
+                    positionArr[i][j] = positionArr[i-1][j-1] + str1[i]
                 }
             } else {
                 if (i === 0 || j === 0) {

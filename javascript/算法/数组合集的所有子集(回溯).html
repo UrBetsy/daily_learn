@@ -17,10 +17,9 @@
                 res[res.length] = [].concat(list);
                 return
             }
-                
             // 开始的元素
             for (var i = start; i < arr.length; i++ ) {
-                list = list.concat(arr[i])
+                list = list.concat(arr[i]) //push会改变原数组，concat不会改变原数组，会返回一个新的
                 allChildren(arr, i + 1, --len, list)
                 list.pop()
                 ++len

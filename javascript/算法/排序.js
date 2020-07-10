@@ -6,6 +6,7 @@ var arr = [3,4,'3',2,6,5,9,7,4]
 /**
  * 快速排序
  * 找一个基准值，比它小的放在它前面比它大的放在它后面
+ * 下面的做法也是一个递归的过程
  */
 function  quickSort (array) {
 	var len = array.length;      	//数组长度
@@ -45,21 +46,20 @@ function bubbleSort(arr) {
 console.log('冒泡排序结果：', bubbleSort(arr))
 /**
  * 选择排序算法
- * 
+ * 从后面的数字中寻找最小的和当前元素换
  */
 function selectionSort(arr) {
     var len = arr.length;
     var minIndex, temp;
     for (var i = 0; i < len - 1; i++) {
         minIndex = i;
+        // 当前元素的后面，寻找打最小的元素，和当前元素替换
         for (var j = i + 1; j < len; j++) {
             if (arr[j] < arr[minIndex]) {     // 寻找最小的数
                 minIndex = j;                 // 将最小数的索引保存
             }
         }
-        temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
+        [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]] // 刚学到的换元素的方法，666
     }
     return arr;
 } 

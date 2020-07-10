@@ -4,6 +4,14 @@
     </head>
     <body>
         <script>
+            /***
+             * 结果都放在了全局arr中
+             * 举例子说明思想：
+             * abc 的全排列
+             * a + bc的全排列
+             * b + ac的全排列
+             * c + ab的全排列
+             */ 
             let str = 'abc'
             let arr = []
             function allPermutation(str, from, to) {
