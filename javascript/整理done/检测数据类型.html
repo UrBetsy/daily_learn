@@ -64,14 +64,22 @@
 		//显然这是判断变量的构造函数
    //Object.prototype.toString.call()
         var a = Object.prototype.toString;
-        console.log(a.call(arr)) //[object Array]
-		console.log(a.call(obj)) //[object Object]
-		console.log(a.call(str)) //[object String]
-		console.log(a.call(num)) //[object Number]
-		console.log(a.call(pnull)) //[object Null]
-		console.log(a.call(pundefined)) //[object Undefined]
-		console.log(a.call(bool)) //[object Boolean]
-		console.log(a.call(u)) //[object Undefined
+        console.log(a.call(arr)) 			//[object Array]
+		console.log(a.call(obj)) 			//[object Object]
+		console.log(a.call(str)) 			//[object String]
+		console.log(a.call(num)) 			//[object Number]
+		console.log(a.call(pnull)) 			//[object Null]
+		console.log(a.call(pundefined)) 	//[object Undefined]
+		console.log(a.call(bool)) 			//[object Boolean]
+		console.log(a.call(u)) 				//[object Undefined
+
+
+		// 这里补充一点
+		console.log(typeof function (){})	// function
+		console.log(typeof Array)			// function
+		console.log(typeof Object)			// function
+		console.log(typeof [])				// object
+		console.log(typeof {})				// object
 	</script>
 </body>
 </html>

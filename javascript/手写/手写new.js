@@ -1,3 +1,7 @@
+/**
+ * 这是一个手写new的
+ * 缺少继承的部分
+ */
 function Person(name, age, job) {
     this.name = name;
     this.age = age;
