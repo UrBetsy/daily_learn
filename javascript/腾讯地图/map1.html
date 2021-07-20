@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://map.qq.com/api/js?v=2.exp&key=CSVBZ-4WUWG-JNHQ5-IYBJ6-PL3TS-ERFBE"></script>
+		<title>腾讯地图-1</title>
+    </head>
+    <style>
+        #app {
+            height: 800px;
+            width: 100%;
+        }
+        #my-map {
+            height: 100%;
+            width: 100%;
+            border-radius: 4px;
+        }
+    </style>
+    <body onload="load()">
+        <script>
+            let longitude = 39.916527; // 初始为故宫位置
+            let latitude = 116.397128;
+
+            function load() {
+                this.myLatLng = new qq.maps.LatLng(this.longitude, this.latitude);
+                const myOptions = {
+                    zoom: 10,
+                    center: this.myLatLng,
+                    mapTypeId: qq.maps.MapTypeId.ROADMAP,
+                };
+                // 初始化map
+                this.map = new qq.maps.Map(document.getElementById('my-map'), myOptions);
+                this.map.panTo(this.myLatLng);
+                // 监听地图点击事件
+                this.ListeningMapClick();
+                // 初始化marker
+                this.marker = new qq.maps.Marker({
+                    position: this.myLatLng,
+                    map: this.map,
+                });
+                this.marker.setPosition(this.myLatLng);
+                // 初始化
+                this.geocoder = new qq.maps.Geocoder();
+            }
+            function ListeningMapClick() {
+                qq.maps.event.addListener(this.map, 'click', event => {
+                    // 点击出现标记
+                    if (!this.marker) {
+                        this.marker = new qq.maps.Marker({
+                            position: event.latLng,
+                            map: this.map,
+                        });
+                    }
+                    this.marker.setPosition(event.latLng);
+                    // 转换成地址信息
+                    this.LatLng2address(event.latLng);
+                });
+            }
+            function LatLng2address(latLng) {
+                const { geocoder } = this;
+                geocoder.getAddress(latLng);
+                geocoder.setComplete(result => {
+                    this.addressValue = result.detail.address;
+                });
+                // eslint-disable-next-line
+                geocoder.setError( err => {
+                    alert('解析地址出错');
+                });
+            }
+            function address2LatLng(address, changeZoom = false) {
+                const { marker, map, geocoder } = this;
+                changeZoom && map.zoomTo(13);
+                geocoder.getLocation(address);
+                geocoder.setComplete(result => {
+                    const { lat, lng } = result.detail.location;
+                    this.latitude = lat;
+                    this.longitude = lng;
+                    marker.setPosition(new qq.maps.LatLng(lat, lng));
+                    map.panTo(new qq.maps.LatLng(lat, lng));
+                });
+                geocoder.setError(err => {
+                    alert('解析错误，请输入正确地址');
+                    this.addressValue = '';
+                });
+            }
+        </script>
+		<div id="app">
+            <div id="my-map"></div>
+        </div>
+	</body>
+</html>
