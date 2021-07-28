@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>左右固定中间自适应</title>
+	</head>
+	<!-- 
+		这是一个左右固定中间自适应的布局
+		利用float进行布局，其实是利用了BFC块级格式化上下文
+	-->
+	<style type="text/css">
+		.container > div{
+			height: 200px;
+		}
+		.left {
+			float: left;
+			width: 300px;
+			background: red;
+		}
+		.right {
+			float: right;
+			width: 300px;
+			background: blue;
+		}
+		.center {
+			overflow: hidden;
+			background: yellow;
+		}
+	</style>
+	<body>
+	 	<div class="container">
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="center">
+				<h1>浮动布局</h1>
+			</div>
+    </div>
+	</body>
+</html>

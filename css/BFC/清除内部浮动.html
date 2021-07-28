@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BFC</title>
+    <meta charset="utf-8"/>
+    <style>
+        .par{
+            border:5px solid #000;
+            width:300px;
+            overflow: hidden;
+        }
+        .child{
+            border:5px solid #f66;
+            width:100px;
+            height:100px;
+            float: left;
+        }
+        .box {
+            height: 100px;
+            width: 300px;
+            background-color: #f66;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>清除内部浮动</h1>
+    <div class="par">
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+    <div class="box">
+        我只是一个普通的div<br />
+        上面已经清除了浮动不会影响我了
+    </div>
+</body>
+</html>

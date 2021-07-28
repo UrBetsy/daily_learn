@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BFC</title>
+    <meta charset="utf-8"/>
+    <style>
+        .wrap{
+            width:300px;
+            border:1px solid #000;
+        }
+        .aside{
+            width:100px;
+            height: 150px;
+            float: left;
+            background: red;
+        }
+        .main{
+            height: 200px;
+            background: yellow;
+            overflow: hidden;
+        }
+        .second{
+            height: 200px;
+            background-color: rebeccapurple;
+            margin-left: 100px;
+        }
+        .relative {
+            position: relative;
+        }
+        .aside2 {
+            width:100px;
+            height: 150px;
+            position: absolute;
+            background: red;
+        }
+        .third {
+            height: 200px;
+            background-color: rosybrown;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>自适应两栏布局</h1>
+    <h3>左边的是一个float：leftBFC容器，右边利用overflow：hidden生成另一个BFC容器</h3>
+    <div class="wrap">
+        <div class="aside"></div>
+        <div class="main"></div>
+    </div>
+
+    <h3>左边的是一个float：left BFC容器，右边利用margin-left</h3>
+    <div class="wrap">
+        <div class="aside"></div>
+        <div class="second"></div>
+    </div>
+
+    <h3>左边的是一个asbolute生成 BFC容器，右边利用margin-left</h3>
+    <div class="wrap relative">
+        <div class="aside2"></div>
+        <div class="third"></div>
+    </div>
+</body>
+</html>

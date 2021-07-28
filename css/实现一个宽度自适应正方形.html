@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现一个自适应的正方形</title>
+	</head>
+	<style>
+		.container {
+			width: 400px;
+		}
+		#square {
+			padding: 25% 0;
+			width: 50%;
+			background-color: green;
+			flex-grow: 1;
+		}
+	</style>
+	<!-- 
+		实现一个自适应的正方形方法：
+		正方形设置:  width: 50%; 子元素的width是相对于父元素的width的百分比，所以是父元素width*50%
+		           padding: 25% 0; padding是相对对父元素的width，所以上下paddding加起来是width*50%
+	 -->
+	<body>
+		<div class="container">
+			<div id = 'square'></div>
+		</div>
+	</body>
+</html>

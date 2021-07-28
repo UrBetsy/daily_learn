@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+	    /*左边绝对定位，右边左边距*/
+	    .parent1{
+	    	display: relative;
+			height: 100px;
+	    }
+		.left1{
+			background-color: blue;
+			width:200px;
+			position: absolute;
+		}
+		.right1{
+			background-color: red;
+			margin-left: 200px;
+		}
+        
+        /*左边左浮动，右边设置左边距，不设置margin-left也可以*/
+		.parent2{
+	    	display: relative; 
+			height: 100px;
+	    }
+        .left2{
+        	background-color: blue;
+        	width: 200px;
+        	float: left;
+        }
+        .right2{
+        	background-color: red;
+        	margin-left: 200px;
+        }
+
+        /*flex布局*/
+        .parent3{
+        	display: flex;
+			height: 100px;
+        }
+        .left3{
+        	width:200px;
+        	background-color: blue;
+        }
+        .right3{
+        	background-color: red;
+        	flex: 1;
+        }
+
+
+        /*table*/
+        .parent4{
+			height: 100px;
+        	display: table;
+        	width: 100%;
+			color: wheat;
+        }
+        .left4{
+        	width: 200px;
+        	display: table-cell;
+        	background-color: blue;
+        }
+        .right4{
+        	display: table-cell;
+        	background-color: red;
+        }
+		
+
+        /*负margin*/
+        .parent5{
+        	background:#ddd;
+        	overflow:hidden; 
+			height: 100px;
+        }
+		.l-box5{
+			float:left;
+			width:100px;
+			background:#bbb;
+		}
+		.r-box5{
+			float:right;
+			width:100%;
+			margin-left:-100px;
+			background:#999;
+		}
+		.r-content5{
+			margin-left:100px;
+		}
+	</style>
+	<body>
+		<h1>左边绝对定位，右边左边距</h1>
+		<div class="parent1">
+			<div class="left1">
+				左边固定
+			</div>
+			<div class='right1'>
+				右边自适应
+			</div>
+		</div>
+
+		<h1>左边左浮动，右边设置左边距，不设置margin-left也可以</h1>
+		<div class="parent2">
+			<div class="left2">
+				左边固定
+			</div>
+			<div class='right2'>
+				右边自适应
+			</div>
+		</div>
+
+		<h1>flex</h1>
+		<div class="parent3">
+			<div class="left3">
+				左边固定
+			</div>
+			<div class='right3'>
+				右边自适应
+			</div>
+		</div>
+
+		<h1>使用table-cell实现</h1>
+		<div class="parent4">
+			<div class="left4">
+				左边固定
+			</div>
+			<div class='right4'>
+				右边自适应
+			</div>
+		</div>
+		
+		<h1>负margin实现</h1>
+		<div class="parent5">
+		  <div class="r-box5">
+		    <div class="r-content5">
+		      右边自适应1 右边自适应2 右边自适应3
+		    </div>
+		  </div>
+		  <div class="l-box5">
+		    左边固定1  左边固定2 左边固定3
+		  </div>
+		</div>
+	</body>
+</html>

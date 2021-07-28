@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BFC</title>
+    <meta charset="utf-8"/>
+    <style>
+        .box{
+            color:red;
+            background: #fcc;
+            width:50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 20px;
+        }
+        .BFC {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>防止垂直margin重叠</h1>
+    <h3>直接写两个div，因为这两个div在同一个BFC中，所以会发生上下margin会重叠</h3>
+    <div class="box">哈哈</div>
+    <div class="box">haha</div>
+
+    <h3>将第一个作为一个BFC</h3>
+    <div class="BFC">
+        <div class="box">哈哈</div>
+    </div>
+    <div class="box">haha</div>
+</body>
+</html>

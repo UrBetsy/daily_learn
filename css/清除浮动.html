@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>浮动</title>
+</head>
+<style>
+    .container1 {
+        border: 1px solid black;
+    }
+    .left1 {
+        height: 100px;
+        width: 100px;
+        background: green;
+        float: left; 
+        /*float浮动元素无法撑开父元素，因为浮动元素不占位*/
+    }
+    .margin {
+        margin-top: 150px;
+    }
+    .clear{
+        clear:both;
+    }
+    .container2{
+        border: 1px solid black;
+    }
+    .container2:after {
+        content: '020';
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    .container3{
+        border: 1px solid black;
+        overflow: hidden;
+    }
+    .container4{
+        border: 1px solid black;
+        float: left;
+    }
+    .container5{
+        border: 1px solid black;
+        position: absolute;
+    }
+    .container6{
+        border: 1px solid black;
+        display: inline-block;
+    }
+</style>
+<body>
+    <h3>
+        <pre>
+            总结：
+            前面两种方法是利用clear属性
+            3456方法是触发了浮动元素复原苏的BFC，使得该父元素可以包含浮动元素，这种方式还有很多
+        </pre>
+    </h3>
+    <h1>浮动元素撑不开父元素</h1>
+    <div class="container1">
+        <div class="left1"></div>
+    </div>
+    <div class="margin"></div>
+    <h1>浮动元素后面，使用带clear属性的空元素</h1>
+    <div class="container1">
+        <div class="left1"></div>
+        <div class="clear"></div>
+    </div>
+    <h1>给浮动元素的容器，使用：after伪元素,after其实紧跟着容器子元素的后面，和clear原理一样</h1>
+    <div class="container2">
+        <div class="left1"></div>
+    </div>
+    <h1>给浮动元素的容器，使用overflow</h1>
+    <div class="container3">
+        <div class="left1"></div>
+    </div>
+    <h1>给浮动元素的容器也添加浮动属性，就可以清楚浮动内部，但是这样整体都是浮动，影响布局</h1>
+    <div class="container4">
+        <div class="left1"></div>
+    </div>
+    <div class="margin"></div>
+    <h1>给容器元素，使用postiton</h1>
+    <div class="container5">
+        <div class="left1"></div>
+    </div>
+    <div class="margin"></div>
+    <h1>给容器元素，使用display，将其设置为inline-block也可以清除浮动，该方法是比较通用，也比较简单的一种</h1>
+    <div class="container6">
+        <div class="left1"></div>
+    </div>
+</body>
+</html>

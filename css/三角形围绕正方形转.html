@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>动画</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<meta charset="utf-8">
+</head>
+<style>
+	#triangle1 {
+		width: 0px;
+		border-bottom: black 170px solid;
+		border-left: transparent 100px solid;
+		border-right: transparent 100px solid;
+	}
+
+	*{
+		margin:0px;
+		padding: 0px;
+	}
+	#triangle{
+		width: 0px;
+		height: 0px;
+		position: relative;
+		border-bottom: 24px solid;
+		border-left: 15px solid transparent;/*透明*/
+		border-right: 15px solid transparent;
+		border-bottom-color: red;
+		animation: myfirst 5s;
+		animation-iteration-count: infinite;
+		left: 20px;
+		top: 26px;
+	}
+	@keyframes myfirst{
+		0%   {border-bottom-color:red; left:20px; top:26px;}
+		25%  {border-bottom-color:black; left:250px; top:26px;}
+		50%  {border-bottom-color:blue; left:250px; top:250px;}
+		75%  {border-bottom-color:green; left:20px; top:250px;}
+		100% {border-bottom-color:red; left:20px; top:26px;}
+	}
+	#squre{
+		width: 200px;
+		height: 200px;
+		background-color: green;
+		position: relative;
+		left: 50px;
+		top: 26px;
+	}
+</style>
+<body>
+	<h3>
+		等边三角形： <br />
+		boder-bottom: 170px black solid; <br />
+		border-left: transparent 100px solid; <br />
+		border-right: transparent 100px solid;<br />
+	</h3>
+	<div id="triangle1"></div>
+	<div id="triangle"></div>
+	<div id="squre"></div>
+</body>
+</html>
